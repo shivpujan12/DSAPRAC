@@ -1,8 +1,10 @@
 import LoveBabbar.InterSectionOfArray;
+import Striver.Pattern;
+
 
 public class Main {
     public static void main(String[] args) {
-        (new InterSectionOfArray()).unitTest();
+        (new Pattern()).unitTest();
     }
 }
 
