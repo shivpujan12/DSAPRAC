@@ -1,10 +1,11 @@
 import LoveBabbar.InterSectionOfArray;
-import Striver.Pattern;
+import Striver.BasicMaths;
+import Striver.CountNos;
 
 
 public class Main {
     public static void main(String[] args) {
-        (new Pattern()).unitTest();
+        (new CountNos()).unitTest();
     }
 }
 
