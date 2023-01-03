@@ -1,11 +1,9 @@
-import LoveBabbar.InterSectionOfArray;
-import Striver.BasicMaths;
-import Striver.CountNos;
+import Striver.RecursionBasics;
 
 
 public class Main {
     public static void main(String[] args) {
-        (new CountNos()).unitTest();
+        (new RecursionBasics()).unitTest();
     }
 }
 
