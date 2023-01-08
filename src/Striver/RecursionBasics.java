@@ -4,6 +4,34 @@ import java.util.ArrayList;
 
 public class RecursionBasics {
 
+//    public static long[] printFibb(int n) {
+//        //Your code here
+//        long[] sol = new long[n];
+//        sol[0] = 1; sol[1] = 1;
+//        return fibo(sol,n,0);
+//    }
+
+//    private static long[] fibo(long[] sol,int n) {
+//
+//    }
+
+    int isPalindrome(String S) {
+        // code here
+        return checkPalin(S,0);
+    }
+
+    //helper function
+    int checkPalin(String s,int i){
+        if(i==s.length()){
+            return 1;
+        }
+
+        if(s.charAt(i) != s.charAt(s.length()-i-1))
+            return 0;
+
+        return checkPalin(s,i+1);
+    }
+
     static ArrayList<Long> factorialNumbers(long N){
         // code here
         ArrayList<Long> sol = new ArrayList<Long>();
@@ -11,6 +39,7 @@ public class RecursionBasics {
         return sol;
     }
 
+    //helper function
     private static void getNumbers(long n, ArrayList<Long> sol,long fact, int i) {
         if(fact>n);
         else{
@@ -20,6 +49,7 @@ public class RecursionBasics {
         }
     }
 
+    //helper function
     private static long getFact(int i) {
         if(i==1) return 1;
         return getFact(i-1) * i;
@@ -61,6 +91,6 @@ public class RecursionBasics {
     }
 
     public void unitTest(){
-        System.out.print(factorialNumbers(6));
+        System.out.print(isPalindrome("acba"));
     }
 }

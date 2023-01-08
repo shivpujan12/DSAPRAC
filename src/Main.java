@@ -1,9 +1,10 @@
 import Striver.RecursionBasics;
+import Helper.Sorter;
 
 
 public class Main {
     public static void main(String[] args) {
-        (new RecursionBasics()).unitTest();
+        (new Sorter()).unitTest();
     }
 }
 
