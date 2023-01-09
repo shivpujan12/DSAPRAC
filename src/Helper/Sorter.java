@@ -104,13 +104,40 @@ public class Sorter {
         for(int i=1; i<arr.length; i++){
             int key = arr[i];
             int j = i;
-            while(arr[j-1]>key && j>0){
+            while(j>0 && arr[j-1]>key){
                 arr[j] = arr[j-1];
                 j--;
             }
             arr[j] = key;
         }
         return arr;
+    }
+
+    int[] insertionSortR(int[] arr,int i,int j,int key){
+
+        if(j>0 && arr[j-1]>key){//iterate j
+            arr[j] = arr[j-1];
+            j--;
+            return insertionSortR(arr,i,j,key);
+        } else { //iterate i
+            //make the swap with key
+            arr[j] = key;
+            i++;
+            if(i==arr.length){//terminate
+                return arr;
+            }
+            key = arr[i];
+            j = i;
+
+            return insertionSortR(arr,i,j,key);
+
+        }
+
+
+    }
+
+    int[] insertionSortRecur(int[] arr){
+        return insertionSortR(arr,1,1,arr[1]);
     }
 
 
@@ -124,8 +151,10 @@ public class Sorter {
     }
 
     public void testInsertion(){
-        int[] arr = insertionSortIter(new int[]{1, 4, 2, 3,5,4,3,1,2});
+        int[] arr = insertionSortIter(new int[]{1, 4, 2, 3});
         System.out.println("Insertion Sort(Iterative): " + Arrays.toString(arr));
+        arr = insertionSortRecur(new int[]{1, 4, 2, 3});
+        System.out.println("Insertion Sort(Recursive): " + Arrays.toString(arr));
     }
 
     public void testSelection(){
