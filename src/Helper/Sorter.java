@@ -139,13 +139,77 @@ public class Sorter {
         return insertionSortR(arr, 1, 1, arr[1]);
     }
 
+    //Quick Sort
+    void quickSortR(int[] arr, int f, int l) {
+        if (f<l) {
+            int p = partition(arr,f,l);
+            quickSortR(arr, f, p-1);//left part
+            quickSortR(arr, p + 1, l);//right part
+        }
+    }
+
+    int partition(int[] arr,int f,int l) {
+        int i = f-1;
+        int j = i+1;
+        int pivot  = arr[l-1];
+        while(j<l){
+            if(arr[j]<=pivot){
+                i++;
+                int temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
+            }
+            j++;
+        }
+        i++;
+        int temp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = temp;
+        return i;
+    }
+
+    int[] quickSortRecur(int[] arr){
+        quickSortR(arr,0,arr.length-1);
+        return arr;
+    }
+
+    int[] quickSortIter(int[] arr){
+        int[] stack = new int[arr.length];
+        int top = -1;
+        stack[++top] = 0;//insert first value
+        stack[++top] = arr.length-1;//insert last value
+        while(top>0) {
+            int l = stack[top--];//pop first value range
+            int f = stack[top--];//pop last value range
+            int p = partition(arr,f,l);
+            if(p-1>0){//create left part in stack
+                stack[++top] = f;
+                stack[++top] = p-1;
+            }
+            if(p+1<l){//create right part
+                stack[++top] = p+1;
+                stack[++top] = l;
+            }
+        }
+        return arr;
+    }
+
+
 
     //unitTests
     public void unitTest() {
-//        testBubble();
-//        testSelection();
-        testInsertion();
+/*        testBubble();
+        testSelection();
+        testInsertion();*/
+        testQuickSort();
 
+    }
+
+    public void testQuickSort() {
+        int[] arr = quickSortRecur(new int[]{1, 4, 2, 3});
+        System.out.println("Quick Sort(Recursive): " + Arrays.toString(arr));
+        arr = quickSortIter(new int[]{1, 4, 2, 3});
+        System.out.println("Quick Sort(Iterative): " + Arrays.toString(arr));
     }
 
     public void testInsertion() {
